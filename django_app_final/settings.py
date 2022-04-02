@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
+import os
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +28,13 @@ SECRET_KEY = 'django-insecure-xa6rd79unt+*d&q-x_iq1lp-y_ltx*t8&^vj69p3dn2(-(duf2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+RUN_LOCAL_DB = config('RUN_LOCAL_DB', default=False, cast=bool)
+
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    '*.herokuapp.com',
+]
 
 
 # Application definition
@@ -76,25 +85,33 @@ WSGI_APPLICATION = 'django_app_final.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-
-    'default': {
-
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-
-        'NAME': 'django_3',
-
-        'USER': 'postgres',
-
-        'PASSWORD': '4Jj243035',
-
-        'HOST': 'localhost',
-
-        'PORT': '5432',
-
+if RUN_LOCAL_DB:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': config('LOCAL_DB_NAME', default='test'),
+            'USER': config('LOCAL_DB_USER', default=''),
+            'HOST': 'localhost',
+            'PORT': 5432
+        }
+    }
+    # If no password is used, the value must not appear in the configuration
+    # Only add the password if one is actually set
+    LOCAL_DB_PASSWORD = config('LOCAL_DB_PASSWORD', default='')
+    if LOCAL_DB_PASSWORD:
+        DATABASES['default']['PASSWORD'] = LOCAL_DB_PASSWORD
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': config('DB_NAME', default=None),
+            'USER': config('DB_USER', default=None),
+            'PASSWORD': config('DB_PASSWORD', default=None),
+            'HOST': config('DB_HOST', default=None),
+            'PORT': 5432
+        }
     }
 
-}
 
 
 # Password validation
@@ -121,9 +138,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Singapore'
 
 USE_I18N = True
+
+USE_L10N = True
 
 USE_TZ = True
 
