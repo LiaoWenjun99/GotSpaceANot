@@ -5,4 +5,4 @@ psycopg2
 gunicorn
 python-decouple
 flask
-dynamic-forms
+dynamic_forms
