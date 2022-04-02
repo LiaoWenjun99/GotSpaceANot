@@ -1,4 +1,4 @@
-django
+django 3.2
 django-heroku
 django-crispy-forms
 psycopg2
