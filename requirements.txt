@@ -8,3 +8,5 @@ flask
 django-dynamic-forms
 dynamic-forms
 dynamic-django-forms
+django forms
+django_forms
