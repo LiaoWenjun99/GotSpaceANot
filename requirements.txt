@@ -7,4 +7,3 @@ gunicorn
 python-decouple
 flask
 django-dynamic-forms
-django.core.urlresolvers
