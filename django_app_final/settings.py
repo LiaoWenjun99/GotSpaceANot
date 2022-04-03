@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-xa6rd79unt+*d&q-x_iq1lp-y_ltx*t8&^vj69p3dn2(-(duf2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = config("DEBUG",default = False,cast = bool)
 
 RUN_LOCAL_DB = config('RUN_LOCAL_DB', default=False, cast=bool)
 
