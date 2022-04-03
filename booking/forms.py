@@ -1,7 +1,7 @@
 
 from django import forms
 from .models import *
-from dynamic_forms import DynamicField, DynamicFormMixin
+from dynamic_forms import DynamicFormMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .widgets import DatePickerInput, TimePickerInput
