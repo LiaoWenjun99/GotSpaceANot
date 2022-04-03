@@ -8,4 +8,4 @@ python-decouple
 flask
 django-dynamic-forms
 django-forms-dynamic
-dynamic-form
+dynamic-forms
