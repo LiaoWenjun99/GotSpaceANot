@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn gotspaceanot.wsgi
+web: gunicorn django_app_final.wsgi
