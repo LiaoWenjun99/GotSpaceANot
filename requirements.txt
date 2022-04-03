@@ -6,6 +6,6 @@ psycopg2-binary
 gunicorn
 python-decouple
 flask
-
+django-widget-tweaks
 django-forms-dynamic
 
