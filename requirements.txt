@@ -7,3 +7,4 @@ gunicorn
 python-decouple
 flask
 django-dynamic-forms
+django-forms-dynamic
