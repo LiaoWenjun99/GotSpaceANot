@@ -31,6 +31,4 @@ urlpatterns = [
     path('start_time/', booking_views.start_time, name='start_time'),
     path('end_time/', booking_views.end_time, name='end_time'),
     path('all_bookings/', booking_views.all_bookings, name='all_bookings'),
-    patterns('', url(r'^dynamic_forms/',
-        include('dynamic_forms.urls', namespace='dynamic_forms'))),
 ]
