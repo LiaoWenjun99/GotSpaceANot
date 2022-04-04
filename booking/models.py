@@ -7,7 +7,7 @@ class Library(models.Model):
     library_name = models.TextField(blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'library'
         
     def __str__(self):
@@ -20,7 +20,7 @@ class Level(models.Model):
     level = models.IntegerField(blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'level'
         
     def __str__(self):
@@ -35,7 +35,7 @@ class Seat(models.Model):
     col = models.CharField(max_length=1, blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'seat'
         
     def __str__(self):
@@ -54,7 +54,7 @@ class Occupied(models.Model):
     end_time = models.TimeField(blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'occupied'
         
     def __str__(self):
